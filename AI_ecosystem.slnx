@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="AI_ecosystem/AI_ecosystem.vcxproj" Id="477ec5ba-5173-4804-bebd-6135cb089cb9" />
+</Solution>
