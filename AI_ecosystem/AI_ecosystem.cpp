@@ -2,33 +2,60 @@
 #include <SFML/Graphics.hpp>
 #include <optional>
 
+#include "game.cpp"
+
+namespace App
+{
+    constexpr const char* Name = "SDL Test";
+    constexpr const char* Version = "1.0";
+    constexpr const char* Id = "games.anakata.test-sfml";
+}
+
 int main()
 {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode({ 700, 600 }), "SFML window");
+    sf::RenderWindow window;
 
-    // Load a sprite to display
-    const sf::Texture texture("toji.jpg");
-    sf::Sprite sprite(texture);
+    std::cout << App::Name;
+    std::cout << App::Version;
+    std::cout << App::Id;
 
-    // Start the game loop
+    sf::RenderWindow window(
+        sf::VideoMode(windowWidth, windowHeight),
+        "Nebulus like",
+        sf::Style::Default
+    );
+
+    window.setVerticalSyncEnabled(true);
+
+    sf::View view(sf::FloatRect(0.f, 0.f, windowWidth, windowHeight));
+    window.setView(view);
+
+    game currentGame(window, windowWidth, windowHeight);
+
     while (window.isOpen())
     {
-        // Process events
-        while (const auto event = window.pollEvent())
+        sf::Event event;
+        while (window.pollEvent(event))
         {
-            // Close window: exit
-            if (event->is<sf::Event::Closed>())
+            if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
+
+            if (currentGame.getMenuState())
+            {
+                currentGame.getMenuHandler().handleEvent(event);
+            }
+            else
+            {
+                currentGame.getInputHandler().handler(event);
+            }
         }
 
-        // Clear screen
+        currentGame.update();
+
         window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
-
-        // Update the window
+        currentGame.render(window);
         window.display();
     }
 }
