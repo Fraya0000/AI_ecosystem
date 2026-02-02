@@ -138,6 +138,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AI_ecosystem.cpp" />
+    <ClCompile Include="map.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

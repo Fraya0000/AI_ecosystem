@@ -1,34 +1,27 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <optional>
+#include "map.h"
 
 int main()
 {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode({ 700, 600 }), "SFML window");
+    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "marchand_map");
 
-    // Load a sprite to display
-    const sf::Texture texture("toji.jpg");
-    sf::Sprite sprite(texture);
+    map gameMap(25, 20, 32, "tileSet.png");
+    gameMap.createEmptyMap();
 
-    // Start the game loop
     while (window.isOpen())
     {
-        // Process events
         while (const auto event = window.pollEvent())
         {
-            // Close window: exit
-            if (event->is<sf::Event::Closed>())
+            if (event.has_value() && event->getIf<sf::Event::Closed>())
+            {
                 window.close();
+            }
         }
 
-        // Clear screen
         window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
-
-        // Update the window
+        gameMap.draw(window);
         window.display();
     }
+
+    return 0;
 }
