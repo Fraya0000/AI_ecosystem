@@ -138,6 +138,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AI_ecosystem.cpp" />
+    <ClCompile Include="btn.cpp" />
+    <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menuHandler.cpp" />
+    <ClCompile Include="settingsMenu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="btn.h" />
+    <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="menuHandler.h" />
+    <ClInclude Include="settingsMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
