@@ -1,5 +1,38 @@
 #include "settingsMenu.h"
 
+settingsMenu::settingsState settingsMenu::getCurrentState() const
+{
+	return currentSettingsState;
+}
+
+settingsMenu::settingsMenu()
+{
+	btnBack = addBtn(0, 100, "RETURN TO MENU");
+	btnMusic = addBtn(0, 200, "VOLUME");
+	btnFullscreen = addBtn(0, 300, "FULLSCREEN");
+	btnControls = addBtn(0, 400, "CONTROLS");
+}
+
+void settingsMenu::onBtnPressed(int id)
+{
+	if (id == btnMusic)
+	{
+		currentSettingsState = settingsState::Music;
+	}
+	else if (id == btnFullscreen)
+	{
+		currentSettingsState = settingsState::Fullscreen;
+	}
+	else if (id == btnBack)
+	{
+		currentSettingsState = settingsState::ReturnMenu;
+	}
+	else if (id == btnControls)
+	{
+		currentSettingsState = settingsState::Controls;
+	}
+}
+
 void settingsMenu::applyFullscreen(sf::RenderWindow& window, bool& isFullscreen)
 {
 	isFullscreen = !isFullscreen;

@@ -1,5 +1,32 @@
 #include "mainMenu.h"
 
+mainMenu::mainMenu()
+{
+	btnPlay = addBtn(0, 100, "PLAY");
+	btnSettings = addBtn(0, 200, "SETTINGS");
+}
+
+mainMenu::~mainMenu()
+{
+}
+
+mainMenu::mainmenuState mainMenu::getCurrentState() const
+{
+	return currentMainMenuState;
+}
+
+void mainMenu::onBtnPressed(int id)
+{
+	if (id == btnSettings)
+	{
+		currentMainMenuState = mainmenuState::Settings;
+	}
+	else if (id == btnPlay)
+	{
+		currentMainMenuState = mainmenuState::Play;
+	}
+}
+
 void mainMenu::render(sf::RenderWindow& window, textures& gameTextures)
 {
 	SDL_RenderFillRect(window, nullptr);
@@ -20,3 +47,5 @@ void mainMenu::render(sf::RenderWindow& window, textures& gameTextures)
 
 	renderTexture(window, gameTextures, textures::textsIndices::SETTINGS, 10, 200, 220, 60);
 }
+
+

@@ -13,24 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\menu">
+      <UniqueIdentifier>{c0e1c384-b6d9-4a9a-a2f8-eb1cec828c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\menu">
+      <UniqueIdentifier>{50bb2f00-dec9-4139-81e2-dcd1b0ceea44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\init">
+      <UniqueIdentifier>{8f50986b-5946-4221-b866-ceccaa8fc766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\init">
+      <UniqueIdentifier>{e6148222-7cbc-44fe-8809-64cdcde11ead}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AI_ecosystem.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="menu.cpp">
+      <Filter>Fichiers sources\menu</Filter>
     </ClCompile>
-    <ClCompile Include="textures.cpp">
-      <Filter>Fichiers sources</Filter>
+    <ClCompile Include="menuHandler.cpp">
+      <Filter>Fichiers sources\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="settingsMenu.cpp">
+      <Filter>Fichiers sources\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="mainMenu.cpp">
+      <Filter>Fichiers sources\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="btn.cpp">
+      <Filter>Fichiers sources\menu</Filter>
     </ClCompile>
     <ClCompile Include="game.cpp">
-      <Filter>Fichiers sources</Filter>
+      <Filter>Fichiers sources\init</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_ecosystem.cpp">
+      <Filter>Fichiers sources\init</Filter>
+    </ClCompile>
+    <ClCompile Include="textures.cpp">
+      <Filter>Fichiers sources\init</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="textures.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+    <ClInclude Include="menu.h">
+      <Filter>Fichiers d%27en-tête\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="mainMenu.h">
+      <Filter>Fichiers d%27en-tête\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="btn.h">
+      <Filter>Fichiers d%27en-tête\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="settingsMenu.h">
+      <Filter>Fichiers d%27en-tête\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menuHandler.h">
+      <Filter>Fichiers d%27en-tête\menu</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
-      <Filter>Fichiers d%27en-tête</Filter>
+      <Filter>Fichiers d%27en-tête\init</Filter>
+    </ClInclude>
+    <ClInclude Include="textures.h">
+      <Filter>Fichiers d%27en-tête\init</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

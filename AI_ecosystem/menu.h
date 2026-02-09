@@ -8,7 +8,6 @@
 class menu
 {
 protected:
-
 	int addBtn(int x, int y, const std::string& name); //Allows to set a method for the childs to create their own buttons
 
 	void renderTexture(sf::RenderWindow& window, textures gameTextures, textures::textsIndices index, float x, float y, float w, float h); //Used to render the buttons with there parameters
@@ -23,10 +22,7 @@ public:
 
 	virtual void onBtnPressed(int btnId) = 0; //function used by children to determine the effect off buttons when pressed
 
-	inline const std::vector<Btn>& getButtons() const //function to share the buttons and give them
-	{
-		return btnTable;
-	}
+	inline const std::vector<Btn>& getButtons() const; //function to share the buttons and give them
 
 	virtual void render(sf::RenderWindow& window, textures& gameTextures) = 0; //function so that children are able to render their buttons
 

@@ -7,16 +7,7 @@
 
 class mainMenu : public menu
 {
-
-private:
-
-	int btnSettings;
-	int btnPlay;
-	int btnBack;
-	//initialise buttons
-
 public:
-
 	enum class mainmenuState //menu's states
 	{
 		Main,
@@ -25,34 +16,22 @@ public:
 		ReturnMenu
 	};
 
-	mainMenu() //setting up buttons
-	{
-		btnPlay = addBtn(0, 100, "PLAY");
-		btnSettings = addBtn(0, 200, "SETTINGS");
-	}
-
-	void onBtnPressed(int id) override //function to change states when btn pressed
-	{
-		if (id == btnSettings)
-		{
-			currentMainMenuState = mainmenuState::Settings;
-		}
-		else if (id == btnPlay)
-		{
-			currentMainMenuState = mainmenuState::Play;
-		}
-	}
-
-private:
-
-	mainmenuState currentMainMenuState = mainmenuState::Main; //Setting state to main
-
 public:
+	mainmenuState getCurrentState() const; //get current menu's state
 
-	mainmenuState getCurrentState() const //get current menu's state
-	{
-		return currentMainMenuState;
-	}
+	mainMenu(); //setting up buttons
+
+	void onBtnPressed(int id) override; //function to change states when btn pressed
 
 	void render(sf::RenderWindow& window, textures& gameTextures) override; //render this->menu
+
+private:
+	int btnSettings;
+	int btnPlay;
+	int btnBack;
+	//initialise buttons
+
+	mainmenuState currentMainMenuState = mainmenuState::Main; //Setting state to main
+private:
+	~mainMenu();
 };

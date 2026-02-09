@@ -9,7 +9,8 @@ game::~game()
 {
 }
 
-//TODO inputHandler& game::getInputHandler() { return gameInputHandler; }
+//
+// inputHandler& game::getInputHandler() { return gameInputHandler; }
 
 void game::update()
 {

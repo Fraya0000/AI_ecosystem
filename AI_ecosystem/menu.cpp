@@ -20,6 +20,11 @@ void menu::renderTexture(sf::RenderWindow& window, textures gameTextures, textur
     sf::Texture(window, texture, nullptr, &rectangle);
 }
 
+inline const std::vector<Btn>& menu::getButtons() const
+{
+    return btnTable;
+}
+
 void menu::handleMenuEvent(sf::Event& Event)
 {
     for (int i = 0; i < btnTable.size(); ++i)

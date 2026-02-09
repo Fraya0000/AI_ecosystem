@@ -138,11 +138,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AI_ecosystem.cpp" />
+    <ClCompile Include="btn.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menuHandler.cpp" />
+    <ClCompile Include="settingsMenu.cpp" />
     <ClCompile Include="textures.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="btn.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="menuHandler.h" />
+    <ClInclude Include="settingsMenu.h" />
     <ClInclude Include="textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
