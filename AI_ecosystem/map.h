@@ -11,8 +11,8 @@ private:
 	int width;
 	int height;
 	int tileSize;
-	sf::Texture tileSet;
-	sf::Sprite tileSprite;
+	sf::Texture* tileSet;
+	sf::Sprite* tileSprite;
 	sf::VertexArray vertices;
 
 public:

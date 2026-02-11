@@ -4,9 +4,12 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "marchand_map");
-
-    map gameMap(25, 20, 32, "tileSet.png");
-    gameMap.createEmptyMap();
+    sf::RectangleShape rectangle;
+    sf::Texture* map = new sf::Texture("marchand_map.png");
+    rectangle.setSize({ 800, 600 });
+    rectangle.setTexture(map);
+    //map gameMap(800, 800, 400, "marchand_map.png");
+    //gameMap.createEmptyMap();
 
     while (window.isOpen())
     {
@@ -17,9 +20,10 @@ int main()
                 window.close();
             }
         }
-
+        window.setVerticalSyncEnabled(true);
         window.clear();
-        gameMap.draw(window);
+        window.draw(rectangle);
+        //gameMap.draw(window);
         window.display();
     }
 
