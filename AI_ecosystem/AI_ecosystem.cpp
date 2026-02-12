@@ -1,34 +1,28 @@
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include <optional>
+#include <iostream>
 
 int main()
 {
-    // Create the main window
-    sf::RenderWindow window(sf::VideoMode({ 700, 600 }), "SFML window");
+    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "marchand_map");
+    sf::RectangleShape rectangle;
+    sf::Texture* map = new sf::Texture("assets/marchand_map.png");
+    rectangle.setSize({ 800, 600 });
+    rectangle.setTexture(map);
 
-    // Load a sprite to display
-    const sf::Texture texture("toji.jpg");
-    sf::Sprite sprite(texture);
-
-    // Start the game loop
     while (window.isOpen())
     {
-        // Process events
         while (const auto event = window.pollEvent())
         {
-            // Close window: exit
-            if (event->is<sf::Event::Closed>())
+            if (event.has_value() && event->getIf<sf::Event::Closed>())
+            {
                 window.close();
+            }
         }
-
-        // Clear screen
+        window.setVerticalSyncEnabled(true);
         window.clear();
-
-        // Draw the sprite
-        window.draw(sprite);
-
-        // Update the window
+        window.draw(rectangle);
         window.display();
     }
+
+    return 0;
 }
