@@ -107,6 +107,7 @@ void merchantBehaviorTree::buildTree()
 	fallBack* commandReceivedFallback = new fallBack("Command Received ?");
 	merchantSequence->addChild(commandReceivedFallback);
 	allSubNodes.push_back(commandReceivedFallback);
+
     taskNode* openShopTask = new taskNode("Open Shop");
     commandReceivedFallback->addChild(openShopTask);
     allSubNodes.push_back(openShopTask);
