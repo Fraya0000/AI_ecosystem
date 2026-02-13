@@ -40,18 +40,6 @@ void clients::determineDirection(const sf::Vector2f& dir)
 
 void clients::updateAnimation(float dt) 
 {
-    animationTime += dt;
-    if (animationTime >= frameHoldTime) 
-    {
-        animationTime = 0.0f;
-        currentFrame = (currentFrame + 1) % 4;
-    }
-
-    int baseIndex = static_cast<int>(currentDirection) * 4;
-    if (baseIndex + currentFrame < static_cast<int>(textures.size())) 
-    {
-        sprite.setTexture(textures[baseIndex + currentFrame]);
-    }
 }
 
 void clients::setMovementPath(const std::vector<sf::Vector2f>& newPath) 
@@ -60,37 +48,8 @@ void clients::setMovementPath(const std::vector<sf::Vector2f>& newPath)
     currentTargetIndex = 0;
 }
 
-void clients::update(float dt) 
+void clients::update(float dt)
 {
-    if (!visible || path.empty() || currentTargetIndex >= path.size()) return;
-
-    sf::Vector2f target = path[currentTargetIndex];
-    sf::Vector2f pos = sprite.getPosition();
-    sf::Vector2f dir = target - pos;
-    float len2 = dir.x * dir.x + dir.y * dir.y;
-
-    if (len2 < 1.0f) 
-    {
-        currentTargetIndex++;
-        return;
-    }
-
-    float len = std::sqrt(len2);
-    dir /= len;
-
-    determineDirection(dir);
-    updateAnimation(dt);
-
-    float maxStep = speed * dt;
-    if (len <= maxStep) 
-    {
-        sprite.setPosition(target);
-        currentTargetIndex++;
-    }
-    else 
-    {
-        sprite.move(dir * maxStep);
-    }
 }
 
 void clients::draw(sf::RenderWindow& window) const 

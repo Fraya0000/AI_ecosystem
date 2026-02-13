@@ -139,20 +139,32 @@
   <ItemGroup>
     <ClCompile Include="AI_ecosystem.cpp" />
     <ClCompile Include="behaviorTree.cpp" />
+    <ClCompile Include="btn.cpp" />
     <ClCompile Include="clients.cpp" />
     <ClCompile Include="fallBack.cpp" />
     <ClCompile Include="flowNode.cpp" />
+    <ClCompile Include="gameTime.cpp" />
+    <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menuHandler.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="sequence.cpp" />
+    <ClCompile Include="settingsMenu.cpp" />
     <ClCompile Include="taskNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="behaviorTree.h" />
+    <ClInclude Include="btn.h" />
     <ClInclude Include="clients.h" />
     <ClInclude Include="fallBack.h" />
     <ClInclude Include="flowNode.h" />
+    <ClInclude Include="gameTime.h" />
+    <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="menu.h" />
+    <ClInclude Include="menuHandler.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="sequence.h" />
+    <ClInclude Include="settingsMenu.h" />
     <ClInclude Include="taskNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

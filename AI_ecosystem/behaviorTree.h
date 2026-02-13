@@ -7,7 +7,7 @@ class baseNode;
 class blackboard
 {
 public:
-	//TODO :  implement all infos for behavior tree into this
+
 };
 
 class behaviorTree

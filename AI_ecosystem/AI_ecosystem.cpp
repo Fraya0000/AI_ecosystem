@@ -3,19 +3,28 @@
 #include <string>
 
 #include "clients.h"
+#include "gameTime.h"
 
 int main() 
 {
 
     sf::RenderWindow window(sf::VideoMode({ 1440, 1080 }), "marchand_map");
+    sf::RectangleShape rectangle;
     window.setFramerateLimit(60);
 
+    sf::Texture* map = new sf::Texture("assets/marchand_map.png");
+    rectangle.setSize({ 800, 600 });
+    rectangle.setTexture(map);
+
     sf::Texture mapTexture;
-    if (!mapTexture.loadFromFile("assets/marchand_map.png")) 
-    {
-        return -1;
-    }
-    sf::Sprite mapSprite(mapTexture);
+    gameTime timer;
+    sf::Clock clock;
+    sf::Font font("assets/arial.ttf");
+    sf::Text timerText(font);
+    timerText.setFont(font);
+    timerText.setCharacterSize(24);
+    timerText.setFillColor(sf::Color::Black);
+    timerText.setPosition({ 20, 20 });
 
     std::vector<std::string> evoliImages = 
     {
@@ -85,28 +94,46 @@ int main()
     evoli.setMovementPath(pathEvoli);
     voltali.setMovementPath(pathVoltali);
 
-    sf::Clock clock;
-
-    while (window.isOpen()) 
+    while (window.isOpen())
     {
-        float dt = clock.restart().asSeconds();
+        float deltaTime = clock.restart().asSeconds();
+        timer.update(deltaTime);
 
-        while (const auto event = window.pollEvent()) 
+        std::stringstream ss;
+        ss << std::fixed << std::setprecision(2) << "Time: " << timer.getTime() << "s | ";
+        switch (timer.getState()) {
+        case gameState::Morning:
+            ss << "Morning";
+            break;
+        case gameState::Day:
+            ss << "Day";
+            break;
+        case gameState::Evening:
+            ss << "Evening";
+            break;
+        }
+        timerText.setString(ss.str());
+
+        while (const auto event = window.pollEvent())
         {
-            if (event.has_value() && event->getIf<sf::Event::Closed>()) 
+            if (event.has_value() && event->getIf<sf::Event::Closed>())
             {
                 window.close();
             }
         }
 
-        evoli.update(dt);
-        voltali.update(dt);
+        evoli.update(deltaTime);
+        voltali.update(deltaTime);
 
         window.clear();
-        window.draw(mapSprite);
+        window.draw(rectangle);
         evoli.draw(window);
         voltali.draw(window);
+        window.setVerticalSyncEnabled(true);
+        window.draw(rectangle);
+        window.draw(timerText);
         window.display();
     }
+    delete map;
     return 0;
 }
