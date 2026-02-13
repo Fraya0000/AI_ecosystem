@@ -7,7 +7,7 @@ enum class eNodeState
 {
 	Unknow = 0,
 	Failure = 1,
-	Succes = 2,
+	Success = 2,
 };
 
 class baseNode

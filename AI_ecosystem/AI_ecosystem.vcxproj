@@ -141,6 +141,7 @@
     <ClCompile Include="behaviorTree.cpp" />
     <ClCompile Include="fallBack.cpp" />
     <ClCompile Include="flowNode.cpp" />
+    <ClCompile Include="gameTime.cpp" />
     <ClCompile Include="node.cpp" />
     <ClCompile Include="sequence.cpp" />
     <ClCompile Include="taskNode.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="behaviorTree.h" />
     <ClInclude Include="fallBack.h" />
     <ClInclude Include="flowNode.h" />
+    <ClInclude Include="gameTime.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="sequence.h" />
     <ClInclude Include="taskNode.h" />

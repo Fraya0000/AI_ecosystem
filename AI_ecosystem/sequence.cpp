@@ -14,7 +14,7 @@ sequence::~sequence()
 
 void sequence::onChildEnd(eNodeState childResult)
 {
-	if (childResult == eNodeState::Succes)
+	if (childResult == eNodeState::Success)
 	{
 		flowNode::onChildEnd(childResult);
 		if (currentExecuteChild != nullptr)
@@ -24,7 +24,7 @@ void sequence::onChildEnd(eNodeState childResult)
 		{
 			if (parent != nullptr)
 			{
-				parent->onChildEnd(eNodeState::Succes);
+				parent->onChildEnd(eNodeState::Success);
 			}
 			else
 			{

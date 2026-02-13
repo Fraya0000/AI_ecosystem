@@ -50,6 +50,16 @@ public:
 	int point2Y;
 };
 
+class merchantBehaviorTree : public behaviorTree
+{
+public:
+	merchantBehaviorTree();
+	merchantBehaviorTree(blackboard* bb);
+	virtual ~merchantBehaviorTree();
+
+	virtual void buildTree() override;
+};
+
 class clientBehaviorTree : public behaviorTree
 {
 public:

@@ -25,7 +25,7 @@ void fallBack::onChildEnd(eNodeState childResult)
 		{
 			if (parent != nullptr)
 			{
-				parent->onChildEnd(eNodeState::Succes);
+				parent->onChildEnd(eNodeState::Success);
 			}
 			else
 			{
