@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="AI_ecosystem.cpp" />
     <ClCompile Include="behaviorTree.cpp" />
+    <ClCompile Include="clients.cpp" />
     <ClCompile Include="fallBack.cpp" />
     <ClCompile Include="flowNode.cpp" />
     <ClCompile Include="node.cpp" />
@@ -147,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="behaviorTree.h" />
+    <ClInclude Include="clients.h" />
     <ClInclude Include="fallBack.h" />
     <ClInclude Include="flowNode.h" />
     <ClInclude Include="node.h" />

@@ -1,0 +1,42 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include <string>
+#include <cmath>
+
+class clients 
+{
+private:
+    bool visible;
+    std::vector<sf::Texture> textures;
+    sf::Sprite sprite;
+    float speed;
+    std::vector<sf::Vector2f> path;
+    std::size_t currentTargetIndex;
+
+    int currentFrame;
+    float animationTime;
+    float frameHoldTime;
+
+    enum Direction 
+    { 
+        RIGHT, 
+        LEFT, 
+        UP, 
+        DOWN 
+    };
+
+    Direction currentDirection;
+
+    void updateAnimation(float dt);
+    void determineDirection(const sf::Vector2f& dir);
+
+public:
+    clients(const std::vector<std::string>& assetNames, sf::Vector2f startPosition);
+
+    void setMovementPath(const std::vector<sf::Vector2f>& newPath);
+    void update(float dt);
+    void draw(sf::RenderWindow& window) const;
+    bool hasFinishedPath() const;
+    sf::Vector2f getPosition() const;
+};
