@@ -32,6 +32,16 @@ protected:
 	std::vector<baseNode*> allSubNodes;
 };
 
+class merchantBlackBoard : public blackboard
+{
+public:
+	int myPosX;
+	int myPosY;
+
+	bool open;
+
+};
+
 class clientBlackBoard : public blackboard
 {
 public:

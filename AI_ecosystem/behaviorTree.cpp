@@ -48,6 +48,17 @@ blackboard* behaviorTree::getBlackBoard()
 {
 	return internBlackBoard;
 }
+merchantBehaviorTree::merchantBehaviorTree() : merchantBehaviorTree(nullptr)
+{
+}
+
+merchantBehaviorTree::merchantBehaviorTree(blackboard* bb) : behaviorTree(bb)
+{
+}
+
+merchantBehaviorTree::~merchantBehaviorTree()
+{ 
+}
 
 clientBehaviorTree::clientBehaviorTree() : clientBehaviorTree(nullptr)
 {
