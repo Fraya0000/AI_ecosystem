@@ -9,7 +9,7 @@ class clients
 private:
     bool visible;
     std::vector<sf::Texture> textures;
-    sf::Sprite sprite;
+    sf::Sprite* sprite;
     float speed;
     std::vector<sf::Vector2f> path;
     std::size_t currentTargetIndex;
@@ -20,10 +20,10 @@ private:
 
     enum Direction 
     { 
-        RIGHT, 
-        LEFT, 
-        UP, 
-        DOWN 
+        RIGHT = 0, 
+        LEFT = 4, 
+        UP = 8, 
+        DOWN = 12
     };
 
     Direction currentDirection;

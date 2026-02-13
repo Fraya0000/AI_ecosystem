@@ -6,6 +6,7 @@ clients::clients(const std::vector<std::string>& assetNames, sf::Vector2f startP
     currentDirection(RIGHT) 
 {
 
+    
     textures.resize(assetNames.size());
     for (size_t i = 0; i < assetNames.size(); ++i) 
     {
@@ -15,11 +16,13 @@ clients::clients(const std::vector<std::string>& assetNames, sf::Vector2f startP
             return;
         }
     }
+   
 
     if (!textures.empty()) 
     {
-        sprite.setTexture(textures[0]);
-        sprite.setPosition(startPosition);
+
+        sprite = new sf::Sprite(textures[currentFrame]);
+        sprite->setPosition(startPosition);
     }
 }
 
@@ -31,15 +34,32 @@ void clients::determineDirection(const sf::Vector2f& dir)
     if (absX > absY) 
     {
         currentDirection = (dir.x > 0) ? RIGHT : LEFT;
+        currentFrame = 0;
+        animationTime = 1.0f;
     }
     else 
     {
         currentDirection = (dir.y > 0) ? DOWN : UP;
+        currentFrame = 0;
+        animationTime = 1.0f;
     }
 }
 
 void clients::updateAnimation(float dt) 
 {
+    animationTime += dt;
+    if (animationTime > frameHoldTime)
+    {
+        animationTime = 0.0f;
+        int StartingSpriteIndex = static_cast<int>(currentDirection);
+        currentFrame++;
+        if (currentFrame >= 4)
+        {
+            currentFrame = 0;
+        }
+
+        sprite->setTexture(textures[StartingSpriteIndex + currentFrame]);
+    }
 }
 
 void clients::setMovementPath(const std::vector<sf::Vector2f>& newPath) 
@@ -54,10 +74,12 @@ void clients::update(float dt)
 
 void clients::draw(sf::RenderWindow& window) const 
 {
-    if (visible) 
+
+    window.draw(*sprite);
+
+   /* if (visible) 
     {
-        window.draw(sprite);
-    }
+    }*/
 }
 
 bool clients::hasFinishedPath() const 
@@ -67,5 +89,5 @@ bool clients::hasFinishedPath() const
 
 sf::Vector2f clients::getPosition() const 
 {
-    return sprite.getPosition();
+    return sprite->getPosition();
 }

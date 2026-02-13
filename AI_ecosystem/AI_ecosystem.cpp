@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+    #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
 
@@ -13,7 +13,7 @@ int main()
     window.setFramerateLimit(60);
 
     sf::Texture* map = new sf::Texture("assets/marchand_map.png");
-    rectangle.setSize({ 800, 600 });
+    rectangle.setSize({ 1440, 1080 });
     rectangle.setTexture(map);
 
     sf::Texture mapTexture;
