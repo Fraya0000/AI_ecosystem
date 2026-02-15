@@ -48,10 +48,12 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode({ 800, 600 }), "marchand_map");
+	float width = 800;
+	float height = 600;
+    sf::RenderWindow window(sf::VideoMode({ width, height }), "marchand_map");
     sf::RectangleShape rectangle;
     sf::Texture* map = new sf::Texture("assets/marchand_map.png");
-    rectangle.setSize({ 800, 600 });
+    rectangle.setSize({ width, height });
     rectangle.setTexture(map);
 
     gameTime timer;
@@ -61,7 +63,7 @@ int main()
     timerText.setFont(font);
     timerText.setCharacterSize(24);
     timerText.setFillColor(sf::Color::Black);
-    timerText.setPosition({ 20, 20 });
+    timerText.setPosition({ 20, 35 });
     //Clock BTClock = Clock(true);
     //const float Duration = 20.0f;
 

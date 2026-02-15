@@ -88,14 +88,6 @@ void merchantBehaviorTree::buildTree()
 	morningFallback->addChild(morningSequence);
 	allSubNodes.push_back(morningSequence);
 
-	taskNode* createMerchantsTask = new taskNode("Create Merchants");
-	morningSequence->addChild(createMerchantsTask);
-	allSubNodes.push_back(createMerchantsTask);
-
-	taskNode* createClientsTask = new taskNode("Create Clients");
-	morningSequence->addChild(createClientsTask);
-	allSubNodes.push_back(createClientsTask);
-
 	fallBack* dayFallback = new fallBack("Day");
 	rootFallback->addChild(dayFallback);
 	allSubNodes.push_back(dayFallback);
@@ -115,18 +107,6 @@ void merchantBehaviorTree::buildTree()
     taskNode* keepClosedTask = new taskNode("Keep Closed");
     commandReceivedFallback->addChild(keepClosedTask);
     allSubNodes.push_back(keepClosedTask);
-
-    fallBack* deficitFallback = new fallBack("Deficit?");
-    merchantSequence->addChild(deficitFallback);
-    allSubNodes.push_back(deficitFallback);
-
-    taskNode* increasePriceTask = new taskNode("Increase Price");
-    deficitFallback->addChild(increasePriceTask);
-    allSubNodes.push_back(increasePriceTask);
-
-    taskNode* samePriceTask = new taskNode("Same Price");
-    deficitFallback->addChild(samePriceTask);
-    allSubNodes.push_back(samePriceTask);
 
     fallBack* quantityZeroFallback = new fallBack("Quantity = 0?");
     merchantSequence->addChild(quantityZeroFallback);
