@@ -1,4 +1,12 @@
-//#include "settingsMenu.h"
+
+
+
+
+
+
+
+
+#include "settingsMenu.h"
 //
 //void settingsMenu::applyFullscreen(sf::RenderWindow& window, bool& isFullscreen)
 //{

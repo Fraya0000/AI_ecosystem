@@ -63,7 +63,17 @@
 //{
 //    return currentState;
 //}
-//
+
+
+
+
+
+
+
+
+
+
+
 //void menuHandler::reset()
 //{
 //    currentState = gameState::menuState;
