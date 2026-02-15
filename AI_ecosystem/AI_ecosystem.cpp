@@ -15,7 +15,6 @@ int main()
     sf::RenderWindow window(sf::VideoMode({ 1440, 1080 }), "marchand_map");
     window.setFramerateLimit(60);
 
-    // Charger la texture de la map correctement
     sf::Texture mapTexture;
     if (!mapTexture.loadFromFile("assets/marchand_map.png"))
     {
@@ -45,79 +44,6 @@ int main()
     shopStatus.setCharacterSize(18);
     shopStatus.setFillColor(sf::Color::Yellow);
 
-    std::vector<std::string> evoliImages = 
-    {
-        "assets/evoli_look_right.png",
-        "assets/evoli_look_right_move_1.png",
-        "assets/evoli_look_right_move_2.png",
-        "assets/evoli_look_right_move_3.png",
-
-        "assets/evoli_look_left.png",
-        "assets/evoli_look_left_move_1.png",
-        "assets/evoli_look_left_move_2.png",
-        "assets/evoli_look_left_move_3.png",
-
-        "assets/evoli_look_up.png",
-        "assets/evoli_look_up_move_1.png",
-        "assets/evoli_look_up_move_2.png",
-        "assets/evoli_look_up_move_3.png",
-
-        "assets/evoli_look_down.png",
-        "assets/evoli_look_down_move_1.png",
-        "assets/evoli_look_down_move_2.png",
-        "assets/evoli_look_down_move_3.png"
-    };
-
-    std::vector<std::string> voltaliImages = 
-    {
-        "assets/voltatli_look_right.png",
-        "assets/voltatli_look_right_move_1.png",
-        "assets/voltatli_look_right_move_2.png",
-        "assets/voltatli_look_right_move_3.png",
-
-        "assets/voltatli_look_left.png",
-        "assets/voltatli_look_left_move_1.png",
-        "assets/voltatli_look_left_move_2.png",
-        "assets/voltatli_look_left_move_3.png",
-
-        "assets/voltatli_look_up.png",
-        "assets/voltatli_look_up_move_1.png",
-        "assets/voltatli_look_up_move_2.png",
-        "assets/voltatli_look_up_move_3.png",
-
-        "assets/voltatli_look_down.png",
-        "assets/voltatli_look_down_move_1.png",
-        "assets/voltatli_look_down_move_2.png",
-        "assets/voltatli_look_down_move_3.png"
-    };
-
-    clients evoli(evoliImages, { 0.f, 600.f });
-    clients voltali(voltaliImages, { 0.f, 650.f });
-
-    std::vector<sf::Vector2f> pathEvoli = 
-    {
-        {385.f, 570.f},
-        {385.f, 330.f},
-        {385.f, 570.f},
-        {50.f, 570.f},
-        {50.f, 330.f},
-        {50.f, 570.f},
-        {1600.f, 570.f}
-    };
-
-    std::vector<sf::Vector2f> pathVoltali = 
-    {
-        {940.f, 650.f},
-        {940.f, 300.f},
-        {948.f, 300.f},
-        {930.f, 300.f},
-        {940.f, 650.f},
-        {1600.f, 650.f}
-    };
-
-    evoli.setMovementPath(pathEvoli);
-    voltali.setMovementPath(pathVoltali);
-
     gameState previousState = gameState::Morning;
 
     while (window.isOpen())
@@ -135,6 +61,7 @@ int main()
         for (auto client : blackboard->getClients()) {
             client->update(deltaTime);
         }
+        blackboard->getClientManager()->update(deltaTime);
         blackboard->removeFinishedClients();
 
         std::stringstream ss;
@@ -160,12 +87,6 @@ int main()
             }
         }
 
-        evoli.sprite->setScale({ 2.2f, 2.2f });
-        voltali.sprite->setScale({ 2.0f, 2.0f });
-
-        evoli.update(deltaTime);
-        voltali.update(deltaTime);
-
         window.clear();
         window.draw(rectangle);
 
@@ -185,8 +106,17 @@ int main()
             window.draw(shopStatus);
         }
 
-        evoli.draw(window);
-        voltali.draw(window);
+        blackboard->getClientManager()->draw(window);
+
+        for (auto client : blackboard->getSpawnedClients()) 
+        {
+            if (client->sprite) {
+                client->sprite->setScale({ 2.0f, 2.0f });
+            }
+            client->update(deltaTime);
+            client->draw(window);
+        }
+
         window.draw(timerText);
         window.display();
     }

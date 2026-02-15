@@ -17,7 +17,7 @@ public:
     bool isOpen;
     std::string name;
 
-    merchant(merchantType t, sf::Vector2f pos, const std::string& n) : type(t), position(pos), isOpen(false), name(n) 
+    merchant(merchantType t, sf::Vector2f pos, const std::string& n) : type(t), position(pos), isOpen(true), name(n) 
     {
     }
 };

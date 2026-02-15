@@ -84,62 +84,62 @@ void merchantBehaviorTree::buildTree()
 {
     behaviorTree::buildTree();
 
-    fallBack* timeRoot = new fallBack(this, nullptr, {});
+    fallBack* timeRoot = new fallBack();
     root->child = timeRoot;
     allSubNodes.push_back(timeRoot);
 
     // Morning branch
-    sequence* morningSeq = new sequence(this, timeRoot, {});
+    sequence* morningSeq = new sequence();
     timeRoot->addChild(morningSeq);
     allSubNodes.push_back(morningSeq);
 
 	// check if it's morning
-    CheckMorningTask* checkMorning = new CheckMorningTask();
+    checkMorningTask* checkMorning = new checkMorningTask();
     morningSeq->addChild(checkMorning);
     allSubNodes.push_back(checkMorning);
 
     // open shops
-    OpenShopsTask* openShops = new OpenShopsTask();
+    openShopsTask* openShops = new openShopsTask();
     morningSeq->addChild(openShops);
     allSubNodes.push_back(openShops);
 
     // Day branch
-    sequence* daySeq = new sequence(this, timeRoot, {});
+    sequence* daySeq = new sequence();
     timeRoot->addChild(daySeq);
     allSubNodes.push_back(daySeq);
 
 	// check if it's day
-    CheckDayTask* checkDay = new CheckDayTask();
+    checkDayTask* checkDay = new checkDayTask();
     daySeq->addChild(checkDay);
     allSubNodes.push_back(checkDay);
 
     // Spawn clients
-    SpawnClientsTask* spawnClients = new SpawnClientsTask();
+    spawnClientsTask* spawnClients = new spawnClientsTask();
     daySeq->addChild(spawnClients);
     allSubNodes.push_back(spawnClients);
 
     // Update clients
-    UpdateClientsTask* updateClients = new UpdateClientsTask();
+    updateClientsTask* updateClients = new updateClientsTask();
     daySeq->addChild(updateClients);
     allSubNodes.push_back(updateClients);
 
 	// Delete clients that finished their path
-    CleanupClientsTask* cleanupClients = new CleanupClientsTask();
+    cleanupClientsTask* cleanupClients = new cleanupClientsTask();
     daySeq->addChild(cleanupClients);
     allSubNodes.push_back(cleanupClients);
 
 	// Evening branch
-    sequence* eveningSeq = new sequence(this, timeRoot, {});
+    sequence* eveningSeq = new sequence();
     timeRoot->addChild(eveningSeq);
     allSubNodes.push_back(eveningSeq);
 
 	// Check if it's evening
-    CheckEveningTask* checkEvening = new CheckEveningTask();
+    checkEveningTask* checkEvening = new checkEveningTask();
     eveningSeq->addChild(checkEvening);
     allSubNodes.push_back(checkEvening);
 
     // Close shops
-    CloseShopsTask* closeShops = new CloseShopsTask();
+    closeShopsTask* closeShops = new closeShopsTask();
     eveningSeq->addChild(closeShops);
     allSubNodes.push_back(closeShops);
 }
