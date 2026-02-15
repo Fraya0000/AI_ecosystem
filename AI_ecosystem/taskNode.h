@@ -7,4 +7,5 @@ public:
 	taskNode();
 	taskNode(behaviorTree* tree, flowNode* nodeParent);
 	virtual ~taskNode() override;
+	virtual eNodeState evaluate(blackboard* bb) = 0;
 };

@@ -32,30 +32,12 @@ protected:
 	std::vector<baseNode*> allSubNodes;
 };
 
-class clientBlackBoard : public blackboard
+class merchantBehaviorTree : public behaviorTree
 {
 public:
-	int myPosX;
-	int myPosY;
-
-	int myDirX;
-	int myDirY;
-
-	bool seeMerchand;
-
-	int point1X;
-	int point1Y;
-
-	int point2X;
-	int point2Y;
-};
-
-class clientBehaviorTree : public behaviorTree
-{
-public:
-	clientBehaviorTree();
-	clientBehaviorTree(blackboard* bb);
-	virtual ~clientBehaviorTree();
+	merchantBehaviorTree();
+	merchantBehaviorTree(blackboard* bb);
+	virtual ~merchantBehaviorTree();
 
 	virtual void buildTree() override;
 };
