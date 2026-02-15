@@ -1,25 +1,32 @@
-    #include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <sstream>
+#include <iomanip>
 
 #include "clients.h"
 #include "gameTime.h"
 
 int main() 
 {
-
     sf::RenderWindow window(sf::VideoMode({ 1440, 1080 }), "marchand_map");
-    sf::RectangleShape rectangle;
     window.setFramerateLimit(60);
 
-    sf::Texture* map = new sf::Texture("assets/marchand_map.png");
-    rectangle.setSize({ 1440, 1080 });
-    rectangle.setTexture(map);
-
+    // Charger la texture de la map correctement
     sf::Texture mapTexture;
+    if (!mapTexture.loadFromFile("assets/marchand_map.png"))
+    {
+        return -1;
+    }
+
+    sf::RectangleShape rectangle;
+    rectangle.setSize({ 1440, 1080 });
+    rectangle.setTexture(&mapTexture);
+
     gameTime timer;
     sf::Clock clock;
     sf::Font font("assets/arial.ttf");
+    
     sf::Text timerText(font);
     timerText.setFont(font);
     timerText.setCharacterSize(24);
@@ -72,23 +79,17 @@ int main()
         "assets/voltatli_look_down_move_3.png"
     };
 
-    clients evoli(evoliImages, { 100.f, 550.f });
-    clients voltali(voltaliImages, { 100.f, 650.f });
+    clients evoli(evoliImages, { 0.f, 600.f });
+    clients voltali(voltaliImages, { 0.f, 650.f });
 
     std::vector<sf::Vector2f> pathEvoli = 
     {
-        {100.f, 550.f},
-        {350.f, 400.f},
-        {900.f, 100.f},
-        {1340.f, 540.f}
+        {1600.f, 540.f}
     };
 
     std::vector<sf::Vector2f> pathVoltali = 
     {
-        {100.f, 650.f},
-        {400.f, 500.f},
-        {850.f, 200.f},
-        {1340.f, 640.f}
+        {1600.f, 640.f}
     };
 
     evoli.setMovementPath(pathEvoli);
@@ -122,6 +123,9 @@ int main()
             }
         }
 
+        evoli.sprite->setScale({ 2.2f, 2.2f });
+        voltali.sprite->setScale({ 2.0f, 2.0f });
+
         evoli.update(deltaTime);
         voltali.update(deltaTime);
 
@@ -129,11 +133,9 @@ int main()
         window.draw(rectangle);
         evoli.draw(window);
         voltali.draw(window);
-        window.setVerticalSyncEnabled(true);
-        window.draw(rectangle);
         window.draw(timerText);
         window.display();
     }
-    delete map;
+
     return 0;
 }

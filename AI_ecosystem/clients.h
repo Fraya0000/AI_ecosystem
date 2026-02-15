@@ -4,12 +4,11 @@
 #include <string>
 #include <cmath>
 
-class clients 
+class clients
 {
 private:
     bool visible;
     std::vector<sf::Texture> textures;
-    sf::Sprite* sprite;
     float speed;
     std::vector<sf::Vector2f> path;
     std::size_t currentTargetIndex;
@@ -18,21 +17,24 @@ private:
     float animationTime;
     float frameHoldTime;
 
-    enum Direction 
-    { 
-        RIGHT = 0, 
-        LEFT = 4, 
-        UP = 8, 
+    enum Direction
+    {
+        RIGHT = 0,
+        LEFT = 4,
+        UP = 8,
         DOWN = 12
     };
 
     Direction currentDirection;
-
+        
     void updateAnimation(float dt);
     void determineDirection(const sf::Vector2f& dir);
 
 public:
+    sf::Sprite* sprite = nullptr;
+
     clients(const std::vector<std::string>& assetNames, sf::Vector2f startPosition);
+    ~clients();
 
     void setMovementPath(const std::vector<sf::Vector2f>& newPath);
     void update(float dt);
